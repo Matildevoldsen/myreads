@@ -22,7 +22,6 @@ class SearchPage extends React.Component {
       	this.setState({
       		books: bookList
       	});
-		console.log(this.state.books);
     }
   
 	render() {
