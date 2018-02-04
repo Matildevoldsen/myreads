@@ -10,7 +10,54 @@ class BookShelf extends Component {
           <h1>MyReads</h1>
         </div>
     	<div className="list-books-content">
-    		
+    		<div className="bookshelf">
+    			<h2 className="bookshelf-title">
+    				Currently Reading
+    			</h2>
+    			
+    			<div className="bookshelf-books">
+          			<ol className="books-grid">
+    					{this.props.books.filter(listed => listed.shelf === "currentlyReading").map(listed =>
+    						<Book
+    							key={listed.id}
+    							listedBook={listed}
+    						/>
+    					)} 
+    				</ol>
+    			</div>
+    		</div>
+    		<div className="bookshelf">
+    			<h2 className="bookshelf-title">
+    				Want to read
+    			</h2>
+    			
+    			<div className="bookshelf-books">
+          			<ol className="books-grid">
+    					{this.props.books.filter(listed => listed.shelf === "wantToRead").map(listed =>
+    						<Book
+    							key={listed.id}
+    							listedBook={listed}
+    						/>
+    					)} 
+    				</ol>
+    			</div>
+    		</div>
+    		<div className="bookshelf">
+    			<h2 className="bookshelf-title">
+    				Read
+    			</h2>
+    			
+    			<div className="bookshelf-books">
+          			<ol className="books-grid">
+    					{this.props.books.filter(listed => listed.shelf === "read").map(listed =>
+    						<Book
+    							key={listed.id}
+    							listedBook={listed}
+    						/>
+    					)} 
+    				</ol>
+    			</div>
+    		</div>
     	</div>
 		<div className="open-search"><Link to="/search">Add a book</Link></div>
     </div>

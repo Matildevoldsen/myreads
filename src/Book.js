@@ -1,19 +1,12 @@
 import React, { Component } from 'react';
-import { Link } from "react-router-dom";
 
 class Book extends Component {
  render() {	
-  const { book, books, changeShelf } = book;
-  const id = book.id;
-  const title = book.title;
-  const authors = book.authors;
-  const	coverImg = book.imageLinks;
-  
   return (
-    	<li key={id}>
+    	<li>
 			<div className="book">
               <div className="book-top">
-				<div className="book-cover" style={{ backgroundImage: `url(${coverImg})` }}></div>
+				<div className="book-cover" style={{ backgroundImage: `url(${this.props.listedBook.imageLinks.thumbnail})` }}></div>
 					<div className="book-shelf-changer">
 						<select>
 							<option value="none" disabled>Move to...</option>
@@ -24,8 +17,8 @@ class Book extends Component {
 						</select>
 					</div>
 				</div>
-                <div className="book-title">{title}</div>
-                <div className="book-authors">{authors}</div>
+                <div className="book-title">{this.props.listedBook.title}</div>
+                <div className="book-authors">{this.props.listedBook.authors}</div>
 			</div>
 	</li>
     );
