@@ -60,7 +60,7 @@ class SearchPage extends React.Component {
                                 "url(" + book.imageLinks.thumbnail + ")"}}/>
 						</div>
 						<div className="book-shelf-changer">
-							<select
+							<select value={book.shelf} onChange={e => this.props.onChangeShelf(book, e.target.value)}
 								value={book.shelf}>
 								<option value="none" disabled>
                         			Move to...
