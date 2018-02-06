@@ -22,6 +22,7 @@ class BookShelf extends Component {
 								onChangeShelf={this.props.onChangeShelf}
     							key={listed.id}
     							listedBook={listed}
+								shelf={listed.shelf}
     						/>
     					)} 
     				</ol>
@@ -39,6 +40,7 @@ class BookShelf extends Component {
                          		onChangeShelf={this.props.onChangeShelf}
     							key={listed.id}
     							listedBook={listed}
+								shelf={listed.shelf}
     						/>
     					)} 
     				</ol>

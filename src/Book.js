@@ -9,7 +9,8 @@ class Book extends Component {
     	<li>
 			<div className="book">
               <div className="book-top">
-				<div className="book-cover" role="image"  style={{ backgroundImage: `url(${this.props.listedBook.imageLinks.thumbnail})` }}></div>
+				<div className="book-cover" role="image"  style={{
+    			backgroundImage:`url(${this.props.listedBook.imageLinks && this.props.listedBook.imageLinks.thumbnail?`${this.props.listedBook.imageLinks.thumbnail}`:`http://via.placeholder.com/128x193?text=No%20Cover`})`}}></div>
 					<div className="book-shelf-changer">
 						<ShelfChanger
 							shelf={this.props.shelf}

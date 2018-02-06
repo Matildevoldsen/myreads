@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 
 class ShelfChanger extends Component {
  render() {	
-  	let currentShelf = this.props.shelf;
+  	let currentShelf = 'none';
     
 	return (
-      	<select value={currentShelf} onChange={e => this.props.onChangeShelf(this.props.book, e.target.value)} >
-			<option value="none" disabled>Move to...</option>
+      	<select value={this.props.shelf ? this.props.shelf : currentShelf} onChange={e => this.props.onChangeShelf(this.props.book, e.target.value)} >
+			<option value="" disabled>Move to...</option>
 			<option value="currentlyReading">Currently Reading</option>
 			<option value="wantToRead">Want to Read</option>
 			<option value="read">Read</option>
