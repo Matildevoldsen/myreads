@@ -36,6 +36,7 @@ class BookShelf extends Component {
           			<ol className="books-grid">
     					{this.props.books.filter(listed => listed.shelf === "wantToRead").map(listed =>
     						<Book
+                         		onChangeShelf={this.props.onChangeShelf}
     							key={listed.id}
     							listedBook={listed}
     						/>
@@ -52,8 +53,10 @@ class BookShelf extends Component {
           			<ol className="books-grid">
     					{this.props.books.filter(listed => listed.shelf === "read").map(listed =>
     						<Book
+                         		onChangeShelf={this.props.onChangeShelf}
     							key={listed.id}
     							listedBook={listed}
+								shelf={listed.shelf}
     						/>
     					)} 
     				</ol>

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 import * as BooksAPI from "./BooksAPI";
 import "./App.css";
-import book from './Book';
+import Book from './Book';
 
 class SearchPage extends React.Component {
   	state = {
@@ -13,15 +13,19 @@ class SearchPage extends React.Component {
     }
   
     updateQuery = (target: string) => {
-      	BooksAPI.search(target).then((list) => {
-          	list.length > 0 ? this.setState({books: list, err: false}) : this.setState({books: list, err: true})
-        })
-    }
-
-	updateBooks = (bookList) => {
-      	this.setState({
-      		books: bookList
-      	});
+      	this.setState({query: target});
+      
+      	if (this.state.query.trim()) {
+          BooksAPI.search(this.state.query).then((list) => {
+               this.props.currentBooks.forEach(currentBook => {
+				list.map(book => {
+                 if (book.id === currentBook.id) book.shelf = currentBook.shelf; 
+                });
+        	   });
+              
+              list.length > 0 ? this.setState({books: list, err: false}) : this.setState({books: list, err: true})
+          })
+        }
     }
   
 	render() {
@@ -51,7 +55,15 @@ class SearchPage extends React.Component {
             <div className="search-books-results">
             	<ol className="books-grid">
 					{this.state.books.map(book =>
-                     <li key={book.id} className="book">
+      
+      					<Book
+      					onChangeShelf={this.props.onChangeShelf}
+      					listedBook={book}
+      					key={book.id}
+						shelf={book.shelf}
+      					/>
+      
+                     /**<li key={book.id} className="book">
 						<div className="book-top">
 							<div
                     		className="book-cover"
@@ -78,7 +90,7 @@ class SearchPage extends React.Component {
                   			<div className="book-authors">
                     			{book.authors[0]}
                   		</div>}
-					 </li>
+					 </li>**/
 					)}
 				</ol>
             </div>
