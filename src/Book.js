@@ -20,11 +20,10 @@ class Book extends Component {
 					</div>
 				</div>
                 <div className="book-title">{this.props.listedBook.title}</div>
-                <div className="book-authors">{this.props.listedBook.authors.map(author =>
-           		 	<div key={author} className="book-authors">
+    			<div className="book-authors">{Array.isArray(this.props.listedBook.authors) ? this.props.listedBook.authors.join(', '):'' && this.props.listedBook.authors.map(author =>
               			{author}
-            		</div>
-          		)}</div>
+    			)}
+    			</div> 
 			</div>
 	</li>
     );
